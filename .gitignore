@@ -1,0 +1,10 @@
+**/target/
+**/build/
+**/.idea/
+*.iml
+**/__pycache__/
+*.pyc
+**/venv/
+**/.venv/
+.env
+.vscode/

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bus Logs</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<header>
+    <h1 th:text="${pageTitle != null ? pageTitle : 'Bus Logs'}">
+        Bus Logs
+    </h1>
+</header>
+
+<div class="container">
+
+    <div class="card">
+
+        <form action="/logs" method="get">
+
+            <label><b>Search Bus Number</b></label>
+
+            <input type="text"
+                   name="busNumber"
+                   placeholder="Enter Bus Number"
+                   th:value="${busNumber}">
+
+            <br><br>
+
+            <label><b>Filter by Date</b></label>
+
+            <input type="date"
+                   name="date"
+                   th:value="${date}">
+
+            <br><br>
+
+            <label><b>Filter by Destination</b></label>
+
+            <input type="text"
+                   name="destination"
+                   placeholder="Enter Destination"
+                   th:value="${destination}">
+
+            <br><br>
+
+            <button type="submit" class="btn">
+                Search
+            </button>
+
+            <a href="/logs" class="btn">
+                Reset
+            </a>
+
+        </form>
+
+        <br>
+
+        <table>
+
+            <thead>
+            <tr>
+                <th>Bus Number</th>
+                <th>Destination</th>
+                <th>Date</th>
+                <th>Entry Time</th>
+                <th>Exit Time</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr th:each="log : ${logs}">
+
+                <td th:text="${log.busNumber}"></td>
+
+                <td th:text="${log.destination}"></td>
+
+                <td th:text="${log.date}"></td>
+
+                <td th:text="${log.entryTime}"></td>
+
+                <td th:text="${log.exitTime != null ? log.exitTime : '-'}"></td>
+
+                <td>
+                    <span th:if="${log.exitTime == null}" class="status-inside">
+                        INSIDE
+                    </span>
+
+                    <span th:if="${log.exitTime != null}" class="status-exited">
+                        EXITED
+                    </span>
+                </td>
+
+            </tr>
+
+            <!-- Display when no records are found -->
+            <tr th:if="${#lists.isEmpty(logs)}">
+                <td colspan="6" style="text-align:center; color:red; font-weight:bold;">
+                    No Bus Logs Found
+                </td>
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

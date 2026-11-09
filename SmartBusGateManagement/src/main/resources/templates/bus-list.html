@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registered Buses</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<header>
+    <h1>Registered Buses</h1>
+</header>
+
+<div class="container">
+
+    <div class="card">
+
+        <table>
+
+            <thead>
+            <tr>
+                <th>Bus Number</th>
+                <th>Bus Name</th>
+                <th>Route</th>
+                <th>Destination</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="bus : ${buses}">
+                <td th:text="${bus.busNumber}"></td>
+                <td th:text="${bus.busName}"></td>
+                <td th:text="${bus.route}"></td>
+                <td th:text="${bus.destination}"></td>
+            </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

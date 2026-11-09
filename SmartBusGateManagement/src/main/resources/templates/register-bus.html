@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register Bus</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<header>
+    <h1>Smart Bus Gate Management System</h1>
+</header>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Register New Bus</h2>
+
+        <form th:action="@{/save-bus}" th:object="${bus}" method="post">
+
+            <label>Bus Number</label>
+            <input type="text" th:field="*{busNumber}" placeholder="Enter Bus Number" required>
+
+            <label>Bus Name</label>
+            <input type="text" th:field="*{busName}" placeholder="Enter Bus Name" required>
+
+            <label>Route</label>
+            <input type="text" th:field="*{route}" placeholder="Enter Route" required>
+
+            <label>Destination</label>
+            <input type="text" th:field="*{destination}" placeholder="Enter Destination" required>
+
+            <button type="submit" class="btn">
+                Save Bus
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>SMART BUS GATE MANAGEMENT SYSTEM</h1>
+
+</header>
+
+<div class="container">
+
+    <h2 style="text-align:center;">Admin Dashboard</h2>
+
+    <p style="text-align:center;">
+        Welcome to Smart Bus Gate Management Dashboard
+    </p>
+
+    <br>
+
+    <div class="dashboard-cards">
+
+        <!-- Total Registered Buses -->
+        <a href="/buses" style="text-decoration:none; color:inherit;">
+            <div class="card">
+                <h3>Total Registered Buses</h3>
+                <h1 th:text="${totalBuses}"></h1>
+            </div>
+        </a>
+
+        <!-- Buses Currently Inside -->
+        <a href="/inside" style="text-decoration:none; color:inherit;">
+            <div class="card">
+                <h3 style="color:green;">Buses Currently Inside</h3>
+                <h1 style="color:green;"
+                    th:text="${currentInside}"></h1>
+            </div>
+        </a>
+
+        <!-- Buses Exited -->
+        <a href="/exited" style="text-decoration:none; color:inherit;">
+            <div class="card">
+                <h3 style="color:red;">Buses Exited</h3>
+                <h1 style="color:red;"
+                    th:text="${exitedBuses}"></h1>
+            </div>
+        </a>
+
+        <!-- Total Bus Logs -->
+        <a href="/logs" style="text-decoration:none; color:inherit;">
+            <div class="card">
+                <h3 style="color:blue;">Total Bus Logs</h3>
+                <h1 style="color:blue;"
+                    th:text="${totalLogs}"></h1>
+            </div>
+        </a>
+
+    </div>
+
+    <br><br>
+
+    <div class="card">
+
+        <a href="/register-bus" class="btn">
+            Register Bus
+        </a>
+
+        &nbsp;&nbsp;
+
+        <a href="/camera" class="btn">
+            Live Camera
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
